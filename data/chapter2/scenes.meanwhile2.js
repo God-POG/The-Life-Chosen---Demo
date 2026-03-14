@@ -1,300 +1,86 @@
 // data/chapter2/scenes.meanwhile2.js
-// Chapter 2 — Meanwhile 2 (After Graduation, Ages 18–22)
-// Expanded, multi-page, with distinct opening variants based on flags:
-// - ch2_confession_success
-// - ch2_confession_failure
-//
-// NOTE: We keep the entry scene id "mw2_01_leaving_parking_lot" as a router,
-// so Graduation can keep goto: "mw2_01_leaving_parking_lot" unchanged.
+// Chapter 2 — Meanwhile 2 (Ages 18–22)
+// Graduation -> Diverging Paths -> Meanwhile 2 choice block -> Drift -> Chapter 3
 
 window.CH2_MEANWHILE2 = [
-  // --- Router: shows one Continue button depending on flags ---
   {
     id: "mw2_01_leaving_parking_lot",
     phase: "meanwhile",
     age: 18,
-    title: "Meanwhile — Leaving the Parking Lot",
-    pages: [
-`The parking lot lights hummed.
-
-The ceremony was over, but the night hadn’t finished deciding what it meant.
-
-Some endings arrive like fireworks.
-
-Some arrive like a door clicking shut behind you.
-
-Either way—after this moment—the world would begin asking different questions.
-
-And the answers would not come from speeches.
-
-They would come from choices.`
-    ],
-    choices: [
-      {
-        text: "Continue.",
-        conditions: { flags: { has: "ch2_confession_success" } },
-        goto: "mw2_01_opening_success"
-      },
-      {
-        text: "Continue.",
-        conditions: { flags: { has: "ch2_confession_failure" } },
-        goto: "mw2_01_opening_failure"
-      },
-      // Fallback if neither flag exists (e.g., dev jump / older saves)
-      {
-        text: "Continue.",
-        goto: "mw2_01_opening_neutral"
-      }
-    ]
-  },
-
-  // --- Success-flavored opening ---
-  {
-    id: "mw2_01_opening_success",
-    phase: "meanwhile",
-    age: 18,
-    title: "Meanwhile — After Yes",
-    pages: [
-`They left the parking lot together, not in a dramatic rush—just with the quiet gravity of people who had finally stopped pretending the truth was optional.
-
-The world outside the car windows looked the same: streetlights, dark lawns, the occasional porch glow.
-
-But inside *BOY_NAME*, something had reorganized.
-
-Not into certainty about the future—nothing that simple.
-
-Into permission.
-
-Permission to want without apologizing.
-Permission to choose without dithering.
-Permission to believe that the thing he’d carried for years wasn’t just a private myth.
-
-When *GIRL_NAME* spoke, her voice sounded close—closer than usual—even when the words were ordinary. Even when she was joking about tassels or complaining about the ceremony.
-
-It felt like standing on the first solid step of a staircase that had been hidden in fog.`,
-
-`In the days that followed, their closeness didn’t become louder.
-
-It became steadier.
-
-They didn’t suddenly perform in public. They didn’t post a parade of proof. They didn’t need an audience.
-
-What changed was subtler:
-
-They made plans without hesitating.
-They texted without second-guessing tone.
-They spoke with the assumption of return.
-
-And that assumption—the belief that you will come back—changes how you live inside the present.
-
-It made summer feel less like a pause and more like a runway.
-
-Because fall was coming.
-
-College brochures. Job interviews. New cities. New routines.
-
-And now the question wasn’t “Do we feel something?”
-
-The question was: what shape will we give it when life stops being convenient?`,
-
-`*BOY_NAME* realized that loving someone at eighteen felt different than wanting someone at sixteen.
-
-Wanting was heat.
-
-Loving was logistics.
-
-Loving was the calendar.
-The distance.
-The boring, necessary conversations.
-The willingness to let the future touch you without flinching.
-
-They could keep this feeling—this steadiness—only if they built around it.
-
-Adulthood does not respect romance by default.
-
-It respects structure.
-
-And structure begins with a decision no one else can see.
-
-When fall approached, they had to decide how to step into it.
-
-Not as a story.
-
-As a life.
-
-What kind of adulthood would they build?`
-    ],
-    choices: [
-      {
-        text: "Continue.",
-        goto: "mw2_01_choice_block"
-      }
-    ]
-  },
-
-  // --- Failure-flavored opening ---
-  {
-    id: "mw2_01_opening_failure",
-    phase: "meanwhile",
-    age: 18,
-    title: "Meanwhile — After Not Yet",
-    pages: [
-`They left the parking lot with something unfinished still humming between them.
-
-Not a rejection.
-Not a breakup.
-Not a dramatic wound.
-
-Just an unanswered question—carefully folded, carefully carried, placed gently back where it had lived for years.
-
-In the car ride home, the streetlights passed like slow metronomes.
-
-They talked. They joked. They said normal things.
-
-But underneath the normal conversation, *BOY_NAME* could feel the moment replaying—tiny details looping like a song fragment you can’t stop hearing:
-
-the lamp’s pale light
-the weight of the gown
-the word “okay” that could hold ten meanings
-
-He told himself he had been careful.
-
-But carefulness has two faces:
-
-one that protects
-and one that avoids
-
-And he couldn’t tell which one had guided him.`,
-
-`In the days that followed, their closeness didn’t disappear.
-
-But it changed texture.
-
-There was a new hesitancy in the air, like they were both trying not to step on a crack they hadn’t noticed before.
-
-They still saw each other.
-
-They still sat close.
-
-They still shared quiet routines that looked like intimacy to everyone else.
-
-But now *BOY_NAME* noticed the invisible work underneath:
-
-the way he measured sentences before speaking
-the way she sometimes looked away first
-the way “us” remained implied instead of chosen out loud
-
-Nothing was broken.
-
-But something was exposed:
-
-Adulthood was coming, and “implied” is a risky foundation when schedules tighten and distance grows teeth.
-
-He didn’t want to lose her.
-
-He also didn’t know how to stop being afraid of changing what they had.`,
-
-`He realized that loving someone at eighteen felt different than wanting someone at sixteen.
-
-Wanting was a heat you could ignore until it passed.
-
-Loving became logistics.
-
-Loving became the calendar.
-The distance.
-The times you have to choose each other when the world is busy choosing for you.
-
-If they didn’t define something, the world would define it for them—through drift, through silence, through missed chances that weren’t anyone’s fault.
-
-Fall approached with its indifferent certainty.
-
-College brochures arrived. Job applications were filled out. Friends spoke in the future tense for the first time without irony.
-
-And now the question wasn’t only “What are we?”
-
-It was: what do we do when life stops holding us in the same orbit?
-
-Adulthood didn’t begin with a ceremony.
-
-It began with a decision no one else could see.
-
-What kind of adulthood would they build?`
-    ],
-    choices: [
-      {
-        text: "Continue.",
-        goto: "mw2_01_choice_block"
-      }
-    ]
-  },
-
-  // --- Neutral fallback opening (for dev/testing/old saves) ---
-  {
-    id: "mw2_01_opening_neutral",
-    phase: "meanwhile",
-    age: 18,
     title: "Meanwhile",
     pages: [
-`The night after graduation did not end with fireworks.
+`The parking lot did not decide the future.
 
-It ended quietly.
+It only revealed what the future would now have to carry.
 
-The parking lot emptied. The tassels were cut and tucked into drawers. The oak tree stood exactly where it always had, indifferent to ceremony.
+Whether the night ended in a kiss or an unfinished pause, the real test would begin afterward—when the ceremony was over, the photographs were put away, and ordinary days returned.
 
-But the world had shifted.
+That had always been where the truth of things showed itself.
 
-College brochures arrived. Job applications were filled out. Friends spoke in the future tense for the first time without irony.
+Not in declarations alone.
 
-And suddenly love wasn’t only feeling.
+In what remained once routine came back.
 
-It was logistics.
-
-Distance.
-
-Choice.
-
-What kind of adulthood would they build?`
+And routine was about to change completely.`
     ],
     choices: [
-      { text: "Continue.", goto: "mw2_01_choice_block" }
+      {
+        text: "Continue.",
+        goto: "ch2_06_diverging_paths"
+      }
     ]
   },
 
-  // --- Shared choice block (A–D) ---
   {
     id: "mw2_01_choice_block",
     phase: "meanwhile",
     age: 18,
     title: "Meanwhile — The Decision",
     pages: [
-`When fall approached, the decisions stopped being theoretical.
+`By the end of summer, adulthood no longer looked abstract.
 
-They became real objects in the world:
+It looked like objects.
 
-an acceptance letter on a kitchen counter
-a job offer email opened three times in a row
-a map app calculating travel time between two cities
-a calendar filled with shifts, classes, obligations
+An acceptance packet spread open across a kitchen table.
+A work schedule pinned to a refrigerator with a magnet from some family vacation no one had thought would become symbolic later.
+A phone screen lit too late at night.
+A map with two destinations that no longer fit easily inside the same daily route.
 
-Adulthood has a way of making romance practical.
+For years, the relationship between *BOY_NAME* and *GIRL_NAME* had been held together partly by structure.
 
-Not less meaningful—more tested.
+The oak tree had a place.
+School had a schedule.
+The bus had a route.
+The library had closing hours.
+Even uncertainty had lived inside repeated contact.
 
-Because a feeling can survive in private.
+Now that old architecture was gone.
 
-A life must survive in public time.
+Whatever came next would have to survive because they chose it, not because life kept placing them side by side.`,
 
-This was the hinge between adolescence and adulthood.
 
-This was where adult patterns began:
+`At home, adulthood was introduced in the usual practical language.
 
-whether they prioritized closeness or independence
-how they handled distance (college, work, ambition)
-whether they defined themselves as “us” or “me + you”
+His mother asked when move-in was.
+His father asked whether the financial forms were finished.
+Dinner still arrived in sequence. The refrigerator still hummed. The house still believed that problems were best faced by naming them clearly and then building around them one piece at a time.
 
-They didn’t get to decide the future.
+That steadiness remained useful.
 
-But they could decide how to meet it.`
+Because love at eighteen no longer asked only whether the feeling was real.
+
+It asked harder questions.
+
+Would they prioritize closeness or expansion?
+Would distance make them more deliberate or less defined?
+Would they become a unit quickly, or protect individuality first?
+Would they name the bond, or trust it to survive on implication alone?
+
+No answer guaranteed safety.
+
+Each one would shape the kind of adulthood they entered.
+
+And that, more than graduation itself, was the real threshold.`
     ],
     choices: [
       {
@@ -324,7 +110,6 @@ But they could decide how to meet it.`
     ]
   },
 
-  // --- Apply scenes (expanded) ---
   {
     id: "mw2_02_apply_interdependent",
     phase: "meanwhile",
@@ -333,49 +118,75 @@ But they could decide how to meet it.`
     pages: [
 `You choose each other first.
 
-Not as a performance. Not as a vow shouted into a crowd.
+Not theatrically.
+Not as an argument against ambition.
+Not because you believe love should swallow everything else.
 
-As an orientation.
+You simply let the relationship become the first reference point.
 
-A practical truth: if one of you turns, the other turns too.
+Before accepting something, you ask what it would mean for both of you.
+Before making plans, you check whether the plans can hold two lives instead of one.
+Distance is not impossible, but it is treated as a problem to solve, not a challenge to romanticize.
 
-You look at colleges with proximity in mind. You weigh opportunity against distance. You talk before decisions are made, not after.
+At first, this feels deeply reassuring.
 
-It feels steady.
+After so many years of almosts, public assumptions, careful pauses, and finally whatever truth graduation made possible, there is relief in orientation.
+Relief in saying: we are building from the same side now.
 
-It feels safe.
+The feeling is not glamorous.
 
-It feels like building a shared room and learning how to move inside it without knocking anything over.
+It is steadiness.
+It is calendars aligned on purpose.
+It is learning which nights belong to study, which to work, which to each other, and how to keep those things from blurring into resentment.`,
 
-But there’s a quiet risk too:
 
-When you move as a unit long enough, it becomes easy to forget where one person ends and the other begins.
+`The best version of this path feels warm in the old way his childhood home felt warm.
 
-Love becomes strong.
+Not loud.
+Not performative.
+Maintained.
 
-Identity becomes porous.`,
+A sweater left in the passenger seat because it has quietly become normal.
+A visit planned three weeks ahead and still felt all the way through in advance.
+A hand reaching across a small restaurant table because the conversation turned difficult and both of you understood touch could steady what words had not yet finished building.
 
-`In the best moments, it’s beautiful.
+The danger appears more slowly.
 
-A hand on the small of a back in a crowded place.
-A shared glance that says “I’m here.”
-A calendar that aligns, not by accident, but by intention.
+When two people become a unit young, the unit can begin making decisions before either person notices what has been surrendered to it.
 
-In the hard moments, you feel the subtle pressure of togetherness:
+You start editing private wants so they fit the pair.
+You hesitate before naming a separate need because separate can feel suspicious.
+You tell yourselves this is maturity, and sometimes it is.
 
-the guilt of wanting something separate
-the fear of being selfish
-the worry that distance—if it ever arrives—will feel like betrayal
+Sometimes it is only fear in a more flattering coat.`,
 
-You don’t break.
-But you learn that closeness is not the same thing as fusion.
 
-Adulthood begins, quietly, with that lesson.`
+`By twenty-two, the relationship is stronger than many people around you would have predicted.
+
+It has weathered logistics.
+It has survived inconvenience.
+It has learned the quiet adult skills movies almost never bother to show:
+checking in before resentment hardens
+planning around money
+repairing tone before tone becomes a wound
+remembering that togetherness is healthiest when it is chosen, not merely expected
+
+And still, one lesson remains essential.
+
+Closeness is not the same thing as fusion.
+
+If you are not careful, devotion can blur the edge between support and self-erasure.
+
+So adulthood teaches you to ask a better question than “Are we close?”
+
+It teaches you to ask:
+
+Can we remain close without disappearing inside each other?`
     ],
     choices: [
       {
         text: "Continue.",
-        action: { type: "advanceYears", years: 4 }, // 18 -> 22
+        action: { type: "advanceYears", years: 4 },
         action2: { type: "applyDrift", profile: "mw2_interdependent_18_to_22" },
         goto: "mw2_03_closing"
       }
@@ -390,40 +201,70 @@ Adulthood begins, quietly, with that lesson.`
     pages: [
 `You choose growth first.
 
-You encourage each other to pursue opportunities even if it means distance.
+The decision is not a rejection of love.
+It is a refusal to let fear disguise itself as loyalty.
 
-You say the brave sentences out loud:
+You tell each other the brave, destabilizing things:
+Take the better opportunity.
+Do not make yourself smaller for me.
+Let us see what survives when the future stops being convenient.
 
-“Go.”
-“Don’t shrink for me.”
-“We’ll figure it out.”
+In the beginning, this choice feels almost noble.
 
-It feels modern. It feels mature. It feels like refusing to make fear into a god.
+There is energy in it.
+A kind of modern optimism.
+The belief that two people can become more fully themselves without treating that expansion as betrayal.
 
-And in many ways, it works.
+You learn quickly that distance changes the texture of everything.
 
-You learn to communicate with clarity because you can’t rely on proximity.
-You learn to schedule love.
-You learn that devotion sometimes looks like letting someone expand.`,
+Affection becomes scheduled.
+Comfort becomes negotiated through call times, travel costs, and the tiny mathematics of exhaustion.
+You stop assuming availability and start being grateful for it.`,
 
-`But distance is not neutral.
 
-Distance creates silence, and silence fills with whatever you pour into it:
+`Some weeks, the relationship feels sharpened by the pressure.
 
-trust, if you have it
-assumptions, if you don’t
-resentment, if you’re tired
-fantasy, if you’re lonely
+Because you cannot rely on proximity, you learn to rely on clarity.
+You say what you mean sooner.
+You stop pretending one half-finished sentence should be enough.
+You discover that communication is not the opposite of romance. It is one of romance's adult forms.
 
-You count weekends. You measure affection in train tickets and video calls and the quiet fatigue of always trying to be “present” across space.
+Other weeks, the distance feels less elegant.
 
-Sometimes it feels like building muscles.
+You are tired.
+They are busy.
+A text lands wrong because timing is a kind of tone.
+A missed call acquires emotional meaning it never asked for.
+Silence fills with whatever the day has made easiest to believe:
+trust, when you are grounded
+assumption, when you are not
+longing, when nothing else quite reaches
 
-Sometimes it feels like reaching for a hand you can’t touch.
+The relationship does not weaken exactly.
 
-Adulthood begins, quietly, with that question:
+It becomes effortful in visible ways.`,
 
-Can you be two whole people and still be an “us”?`
+
+`By twenty-two, you have learned something many people do not learn until much later.
+
+Love can survive distance.
+But distance is never neutral.
+
+It asks for discipline.
+It rewards honesty.
+It punishes vagueness faster than youth ever did.
+
+You have become more separate and, in some ways, more adult because of it.
+You each own your own momentum now.
+You know how to build a life that does not collapse when the other person is out of reach.
+
+That is a strength.
+
+The remaining question is whether strength will keep feeding intimacy or eventually replace it.
+
+Because adulthood does not ask only whether two people care.
+
+It asks whether two whole selves can keep choosing “us” without either one becoming a ghost at the edge of the other's ambition.`
     ],
     choices: [
       {
@@ -443,41 +284,75 @@ Can you be two whole people and still be an “us”?`
     pages: [
 `You stay undefined.
 
-You don’t make declarations. You don’t draw hard lines. You assume what you have will hold without formal structure.
+Not because nothing is there.
 
-It isn’t laziness.
+Because there is so much there that naming it feels risky.
 
-It’s hope.
+For years, the relationship survived through implication.
+The oak tree mattered before either of you had words for why.
+School years deepened things through repetition more than declaration.
+Even late in adolescence, meaning often arrived in pauses, not labels.
 
-Hope that love, if it’s real, shouldn’t need a label to survive.
+So part of you believes adulthood might work the same way.
 
-So you drift into adulthood the way you drift into sleep: trusting it will happen naturally.
+If the connection is real, surely it should not need formal edges to survive.
 
-For a while, it does.
+For a little while, that hope feels justified.
 
-Small kisses.
-Long talks.
-Familiar hands finding each other in crowded rooms.
+You keep seeing each other.
+You keep talking.
+There are still touches, long conversations, private returns, the familiar sense that whatever exists between you is deeper than what either of you would casually call friendship.
 
-The comfort of “we don’t have to explain ourselves.”`,
+And because nothing has been denied, it is easy to mistake continuity for security.`,
 
-`But adulthood introduces pressure.
 
-Schedules tighten. New priorities arrive. New people appear with new demands.
+`But adulthood is less forgiving of beautiful ambiguity than adolescence was.
 
-And when pressure increases, undefined things sometimes blur—not from malice, but from neglect.
+Schedules tighten.
+New people enter the frame.
+Work and distance and opportunity begin making claims on time that youth once left open by default.
 
-Not because anyone wanted them to disappear.
+And because the relationship is still mostly implied, every strain becomes harder to interpret cleanly.
 
-Because nobody protected them with language.
+Is this freedom?
+Is this drift?
+Is this trust?
+Is this avoidance dressed up as patience?
 
-The question becomes sharp in the quiet moments:
+Nobody is lying.
+Nobody is being cruel.
+That almost makes it worse.
 
-Is avoiding definition a kind of freedom…
+There is no villain to resist, only erosion.
 
-…or a kind of slow disappearance?
+A missed weekend.
+A plan not clarified.
+An assumption left untested because clarifying it might force a conversation both of you are still half-afraid to have.
 
-Adulthood begins, quietly, with that uncertainty.`
+Things do not break loudly.
+
+They soften at the edges first.`,
+
+
+`By twenty-two, what remains between you is still real.
+
+That is the difficult part.
+
+Unclear bonds can remain emotionally powerful for years.
+Shared history does not disappear merely because structure is missing.
+Sometimes the very lack of definition makes the attachment feel larger, because fantasy has more room to move in unframed spaces.
+
+But fantasy is not the same thing as architecture.
+
+You begin to understand that language is not only exposure.
+Sometimes it is protection.
+Sometimes the kindest thing two people can do for a bond is give it a shape sturdy enough to survive public time.
+
+Until then, adulthood keeps asking the same question in quieter and quieter ways:
+
+Is avoiding definition a form of freedom—
+
+or the most polite way two people can slowly lose each other?`
     ],
     choices: [
       {
@@ -497,42 +372,74 @@ Adulthood begins, quietly, with that uncertainty.`
     pages: [
 `You commit quietly.
 
-No announcements. No public performance. No curated proof.
+No announcement post.
+No dramatic rebrand of the relationship.
+No urge to make the outside world certify what the inside world already knows.
 
-Just a private agreement spoken in a voice meant only for each other:
+You simply agree—plainly, privately—that this is something you are building.
 
-“We’re building something.”
+That decision fits the shape of your history.
 
-It doesn’t feel like a cage.
+The important things between you were rarely loud.
+The oak tree mattered without witnesses.
+The buried stone mattered because it was shared, not displayed.
+Even later, so much of your intimacy was built in spaces that would have looked ordinary to anyone else: buses, hallways, library tables, curbs, parked cars, pauses.
 
-It feels like choosing a direction and agreeing to carry it together, even when life pushes sideways.
+So adulthood begins the same way.
 
-You talk more than you used to—not because you’re less romantic, but because adulthood punishes assumptions.
+Not as spectacle.
 
-You ask practical questions and treat them like intimacy:
+As practice.`,
 
-“When do we visit?”
-“What do we need to feel safe?”
-“What do we do if one of us has to move?”
 
-The conversations are not glamorous.
+`The strength of this path is not intensity.
 
-They are durable.`,
+It is durability.
 
-`In the best moments, it feels like a foundation:
+You learn that practical questions can be affectionate.
+What weekend works.
+How often do we need to talk to stay steady.
+What does reassurance sound like for you when life gets loud.
+How do we disagree without making distance do extra damage.
 
-not loud love, but resilient love
-not a spotlight, but a structure
+Those conversations would have bored your younger selves.
+Now they feel intimate in a different register.
 
-In the hard moments, you learn how to repair instead of retreat.
+You are not trying to preserve a fantasy version of love.
+You are trying to make a real version survivable.
 
-You learn how to fight without cruelty.
-You learn how to apologize without bargaining.
-You learn how to choose each other again and again without making it a spectacle.
+That requires more language than adolescence did.
 
-Adulthood begins, quietly, with this:
+Not because the feeling is weaker.
+Because adulthood punishes assumption more quickly.`,
 
-commitment as a practice, not a mood.`
+
+`By twenty-two, the relationship has become something quietly resilient.
+
+Not invulnerable.
+Nothing worth having ever is.
+
+But resilient.
+
+You know how to repair after small injuries instead of pretending they did not happen.
+You know how to apologize without turning the apology into a defense.
+You know how to revisit a hard subject after emotion cools instead of deciding that one bad conversation defines everything.
+
+There is still longing.
+Still fear.
+Still the ordinary adult strain of calendars, money, fatigue, and separate ambitions.
+
+But underneath all of that, there is structure.
+
+And structure, you now understand, is not what kills romance.
+
+It is often what lets romance outlive mood.
+
+Adulthood begins, quietly, with that realization:
+
+commitment is not a feeling you happen to have.
+
+It is a way of continuing to build when feeling alone would not be enough.`
     ],
     choices: [
       {
@@ -544,28 +451,50 @@ commitment as a practice, not a mood.`
     ]
   },
 
-  // --- Closing (same for all paths) ---
   {
     id: "mw2_03_closing",
     phase: "meanwhile",
     age: 22,
     title: "Meanwhile",
     pages: [
-`Adulthood did not begin with a ceremony.
+`By twenty-two, the relationship no longer belongs to adolescence alone.
 
-It began with a decision no one else could see.
+Whatever shape it has taken—steady, stretched, undefined, or quietly durable—it has now been tested by the first adult version of time.
 
-Somewhere between calendars and commitments, between distance and proximity, a pattern formed.
+Not school time.
+Not summer time.
+Adult time.
 
-Not just how you loved.
+The kind that arrives with rent, schedules, jobs, applications, long drives, delayed replies, private exhaustion, practical compromise, and the humbling discovery that love survives not only through feeling, but through maintenance.
 
-But how you lived.
+That lesson would have made no sense beneath the oak tree.
 
-Chapter 3 will open inside that pattern—whether it feels like closeness or distance, ambition or neglect, external pressure or internal uncertainty.
+And yet the oak tree was where the pattern began.
 
-Because the years between are not empty.
+A place made meaningful by return.
+A secret made larger by being shared.
+A bond built slowly enough that, for years, it could be mistaken for accident by anyone standing outside it.
 
-They are the shape of what comes next.`
+Now the accident is gone.
+
+What remains is pattern.
+
+What remains is practice.
+
+What remains is whatever the two of you have learned to build when memory is no longer enough by itself.`,
+
+
+`Chapter 3 will not begin with a blank slate.
+
+It will begin inside this pattern.
+
+Inside whatever adulthood has already taught you about closeness, distance, repair, ambition, fear, maintenance, and the difference between wanting a future and knowing how to live inside one.
+
+Because the years between eighteen and twenty-two are not empty.
+
+They are structure.
+
+And structure—quietly, invisibly, relentlessly—is what the next chapter will inherit.`
     ],
     choices: [
       { text: "Continue to Chapter 3.", goto: "ch3_stub_start" }
